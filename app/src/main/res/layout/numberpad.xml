@@ -18,13 +18,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent"></TableLayout>
 
     <TableLayout
         android:id="@+id/numberPad"
-        android:layout_width="347dp"
-        android:layout_height="213dp"
+        android:layout_width="275dp"
+        android:layout_height="209dp"
         android:background="#FFFFFF"
         android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="@+id/tableLayout"

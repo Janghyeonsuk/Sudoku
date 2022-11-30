@@ -9,20 +9,20 @@ import android.widget.TableRow;
 
 public class MainActivity extends AppCompatActivity {
     BoardGenerator board = new BoardGenerator();
+    CustomButton clickedCustomButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setContentView(R.layout.numberpad);
 
         TableLayout table = (TableLayout) findViewById(R.id.tableLayout);
-
         TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
-
         numberPad.setVisibility(View.INVISIBLE);
 
         CustomButton[][] buttons = new CustomButton[9][9];
+
+        CustomButton clickedCustomButton =new CustomButton(this);
 
         for (int i = 0; i < 9; i++) {
             TableRow tableRow = new TableRow(this);
@@ -66,6 +66,72 @@ public class MainActivity extends AppCompatActivity {
             }
             table.addView(tableRow);
         }
+
+    }
+
+    public void onClickNum1(View view) {
+        clickedCustomButton.set(1);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickNum2(View view) {
+        clickedCustomButton.set(2);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickNum3(View view) {
+        clickedCustomButton.set(3);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickNum4(View view) {
+        clickedCustomButton.set(4);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickNum5(View view) {
+        clickedCustomButton.set(5);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickNum6(View view) {
+        clickedCustomButton.set(6);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickNum7(View view) {
+        clickedCustomButton.set(7);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickNum8(View view) {
+        clickedCustomButton.set(8);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickNum9(View view) {
+        clickedCustomButton.set(9);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickCancel(View view) {
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickDel(View view) {
+        clickedCustomButton.set(0);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
     }
 
     // Conflict
