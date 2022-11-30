@@ -13,27 +13,24 @@ public class CustomButton extends FrameLayout {
     int col;
     int value;
 
-    int boxRow;
-    int boxCol;
-
     TextView textView;
 
-    public CustomButton(Context context) {
-        super(context);
-    }
+    int boxRow;
+    int boxCol;
 
     public CustomButton(Context context, int row, int col) {
         super(context);
         this.row = row;
         this.col = col;
 
+        boxRow = row/3;
+        boxCol = col/3;
+
         textView = new TextView(context);
 
         textView.setTextSize(44);
         textView.setTextColor(Color.BLACK);
         textView.setGravity(Gravity.CENTER);
-        textView.setTypeface(Typeface.DEFAULT_BOLD);
-        textView.setClickable(true);
         textView.setBackgroundResource(R.drawable.button_selector);
         addView(textView);
     }

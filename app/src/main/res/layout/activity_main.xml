@@ -5,6 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
     android:orientation="horizontal"
     android:padding="10dp"
     tools:context=".MainActivity">
@@ -18,19 +19,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent"></TableLayout>
 
     <TableLayout
         android:id="@+id/numberPad"
-        android:layout_width="275dp"
-        android:layout_height="209dp"
+        android:layout_width="297dp"
+        android:layout_height="214dp"
         android:background="#FFFFFF"
+        android:clickable="false"
         android:stretchColumns="*"
-        app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout"
-        app:layout_constraintTop_toTopOf="@+id/tableLayout">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
