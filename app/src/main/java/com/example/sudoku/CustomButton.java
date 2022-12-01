@@ -2,7 +2,6 @@ package com.example.sudoku;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -28,7 +27,8 @@ public class CustomButton extends FrameLayout {
 
         textView = new TextView(context);
 
-        textView.setTextSize(44);
+        textView.setTextSize(20);
+        textView.setPadding(10,42,10,42);
         textView.setTextColor(Color.BLACK);
         textView.setGravity(Gravity.CENTER);
         textView.setBackgroundResource(R.drawable.button_selector);

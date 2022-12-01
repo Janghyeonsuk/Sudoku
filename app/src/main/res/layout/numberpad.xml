@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
+    android:background="@android:color/transparent"
     android:orientation="horizontal"
     android:padding="10dp"
     tools:context=".MainActivity">
@@ -19,49 +19,52 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TableLayout>
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TableLayout>
 
     <TableLayout
         android:id="@+id/numberPad"
-        android:layout_width="297dp"
-        android:layout_height="214dp"
-        android:background="#FFFFFF"
-        android:clickable="false"
-        android:stretchColumns="*"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#A6000000"
+        android:gravity="center_vertical"
+        android:weightSum="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/inputNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="InputNumber"
+                android:layout_weight="1"
+                android:text="@string/padText"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/white">
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickNum1"
                 android:text="1" />
 
@@ -69,6 +72,7 @@
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickNum2"
                 android:text="2" />
 
@@ -76,18 +80,23 @@
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickNum3"
                 android:text="3" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/white">
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickNum4"
                 android:text="4" />
 
@@ -95,6 +104,7 @@
                 android:id="@+id/button5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickNum5"
                 android:text="5" />
 
@@ -102,18 +112,23 @@
                 android:id="@+id/button6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickNum6"
                 android:text="6" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/white">
 
             <Button
                 android:id="@+id/button7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickNum7"
                 android:text="7" />
 
@@ -121,6 +136,7 @@
                 android:id="@+id/button8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickNum8"
                 android:text="8" />
 
@@ -128,22 +144,28 @@
                 android:id="@+id/button9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickNum9"
                 android:text="9" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@color/white">
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/button10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickCancel"
                 android:text="CANCEL" />
 
@@ -151,6 +173,7 @@
                 android:id="@+id/button11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="onClickDel"
                 android:text="DEL" />
         </TableRow>

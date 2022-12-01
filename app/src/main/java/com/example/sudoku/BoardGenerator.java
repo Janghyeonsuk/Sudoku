@@ -4,38 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class BoardGenerator {
-/*
-	보드 생성
-	9 x 9 보드를 3 x 3짜리 보드 9개로 나눔
-
-	s0 s1 s2
-	s3 s4 s5
-	s6 s7 s8
-
-	s0~8는 각각 3 x 3 행렬
-
-	s0는 1~9의 숫자를 랜덤 배치
-
-	s1 = x2 * s0
-	s2 = x1 * s0
-	s3 = s0 * x1
-	s4 = s1 * x1
-	s5 = s2 * x1
-	s6 = s0 * x2
-	s7 = s1 * x2
-	s8 = s2 * x2
-
-	x1 =
-	0 0 1
-	1 0 0
-	0 1 0
-
-	x2 =
-	0 1 0
-	0 0 1
-	1 0 0
-
- */
 
     private int[][] board = new int[9][9];
 

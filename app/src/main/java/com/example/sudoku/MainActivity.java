@@ -2,8 +2,10 @@ package com.example.sudoku;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             TableRow tableRow = new TableRow(this);
 
             for (int j = 0; j < 9; j++) {
+
                 buttons[i][j] = new CustomButton(this, i, j);
 
                 buttons[i][j].setOnClickListener(new View.OnClickListener() {
@@ -56,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
                 int bottom = 5;
 
                 if (i == 3 || i == 6) {
-                    top = 35;
+                    top = 30;
                 }
                 if (j == 3 || j == 6) {
-                    left = 20;
+                    left = 15;
                 }
 
                 layoutParams.setMargins(left, top, right, bottom);
