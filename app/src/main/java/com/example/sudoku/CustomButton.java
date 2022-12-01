@@ -28,7 +28,7 @@ public class CustomButton extends FrameLayout {
         textView = new TextView(context);
 
         textView.setTextSize(20);
-        textView.setPadding(10,42,10,42);
+        textView.setPadding(10,35,10,35);
         textView.setTextColor(Color.BLACK);
         textView.setGravity(Gravity.CENTER);
         textView.setBackgroundResource(R.drawable.button_selector);

@@ -2,18 +2,20 @@ package com.example.sudoku;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
 public class MainActivity extends AppCompatActivity {
     BoardGenerator board = new BoardGenerator();
+
     CustomButton clickedCustomButton;
     TableLayout numberPad;
 
+    CustomButton[][] buttons = new CustomButton[9][9];
+    Button reset = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         numberPad.setVisibility(View.INVISIBLE);
 
-        CustomButton[][] buttons = new CustomButton[9][9];
+
 
         for (int i = 0; i < 9; i++) {
             TableRow tableRow = new TableRow(this);
@@ -72,7 +74,29 @@ public class MainActivity extends AppCompatActivity {
             }
             table.addView(tableRow);
         }
+        reset = new Button(this);
+        reset.setText("RESET");
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BoardGenerator reGame = new BoardGenerator();
 
+                for (int i = 0; i < 9; i++) {
+                    for (int j = 0; j < 9; j++) {
+                        int number = reGame.get(i,j);
+                        buttons[i][j].set(number);
+                    }
+                }
+                for (int i = 0; i < 9; i++) {
+                    for (int j = 0; j < 9; j++) {
+                        if (Math.random() <= 0.40) {
+                            buttons[i][j].set(0);
+                        }
+                    }
+                }
+            }
+        });
+        table.addView(reset);
     }
 
     public void onClickNum1(View view) {
