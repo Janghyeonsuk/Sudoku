@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         clickedCustomButton = (CustomButton) view;
+                        setConflict();
+
                         numberPad.setVisibility(View.VISIBLE);
                     }
                 });
@@ -132,10 +134,12 @@ public class MainActivity extends AppCompatActivity {
         int col = clickedCustomButton.col;
         for (int i = 0; i < 9; i++) {
             if (buttons[row][i].value == value) {
+                buttons[row][i].textView.setBackgroundResource(R.drawable.conflict);
                 clickedCustomButton.textView.setBackgroundResource(R.drawable.conflict);
             }
 
             if (buttons[i][col].value == value) {
+                buttons[i][col].textView.setBackgroundResource(R.drawable.conflict);
                 clickedCustomButton.textView.setBackgroundResource(R.drawable.conflict);
             }
         }
@@ -143,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = clickedCustomButton.boxRow; i < clickedCustomButton.boxRow + 3; i++) {
             for (int j = clickedCustomButton.boxCol; j < clickedCustomButton.boxCol + 3; j++) {
                 if (buttons[i][j].value == value) {
+                    buttons[i][j].textView.setBackgroundResource(R.drawable.conflict);
                     clickedCustomButton.textView.setBackgroundResource(R.drawable.conflict);
                 }
             }
@@ -155,10 +160,12 @@ public class MainActivity extends AppCompatActivity {
         int col = clickedCustomButton.col;
         for (int i = 0; i < 9; i++) {
             if (buttons[row][i].value != value) {
+                buttons[row][i].textView.setBackgroundResource(R.drawable.unconflict);
                 clickedCustomButton.textView.setBackgroundResource(R.drawable.unconflict);
             }
 
             if (buttons[i][col].value != value) {
+                buttons[i][col].textView.setBackgroundResource(R.drawable.unconflict);
                 clickedCustomButton.textView.setBackgroundResource(R.drawable.unconflict);
             }
         }
@@ -166,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = clickedCustomButton.boxRow; i < clickedCustomButton.boxRow + 3; i++) {
             for (int j = clickedCustomButton.boxCol; j < clickedCustomButton.boxCol + 3; j++) {
                 if (buttons[i][j].value != value) {
+                    buttons[i][j].textView.setBackgroundResource(R.drawable.unconflict);
                     clickedCustomButton.textView.setBackgroundResource(R.drawable.unconflict);
                 }
             }
