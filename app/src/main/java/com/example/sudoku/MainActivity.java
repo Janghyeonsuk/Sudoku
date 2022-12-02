@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         clickedCustomButton = (CustomButton) view;
-                        setConflict();
-
                         numberPad.setVisibility(View.VISIBLE);
                     }
                 });
@@ -113,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     for (int j = 0; j < 9; j++) {
                         int number = reGame.get(i, j);
                         buttons[i][j].set(number);
+                        buttons[i][j].textView.setBackgroundResource(R.drawable.button_selector);
                     }
                 }
                 for (int i = 0; i < 9; i++) {
@@ -190,6 +189,8 @@ public class MainActivity extends AppCompatActivity {
         clickedCustomButton.set(1);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        setConflict();
+        unsetConflict();
         toast();
     }
 
@@ -197,6 +198,8 @@ public class MainActivity extends AppCompatActivity {
         clickedCustomButton.set(2);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        setConflict();
+        unsetConflict();
         toast();
     }
 
@@ -204,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
         clickedCustomButton.set(3);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        setConflict();
+        unsetConflict();
         toast();
     }
 
@@ -211,6 +216,8 @@ public class MainActivity extends AppCompatActivity {
         clickedCustomButton.set(4);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        setConflict();
+        unsetConflict();
         toast();
     }
 
@@ -218,6 +225,8 @@ public class MainActivity extends AppCompatActivity {
         clickedCustomButton.set(5);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        setConflict();
+        unsetConflict();
         toast();
     }
 
@@ -225,6 +234,8 @@ public class MainActivity extends AppCompatActivity {
         clickedCustomButton.set(6);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        setConflict();
+        unsetConflict();
         toast();
     }
 
@@ -232,6 +243,8 @@ public class MainActivity extends AppCompatActivity {
         clickedCustomButton.set(7);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        setConflict();
+        unsetConflict();
         toast();
     }
 
@@ -239,6 +252,8 @@ public class MainActivity extends AppCompatActivity {
         clickedCustomButton.set(8);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        setConflict();
+        unsetConflict();
         toast();
     }
 
@@ -246,6 +261,8 @@ public class MainActivity extends AppCompatActivity {
         clickedCustomButton.set(9);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        setConflict();
+        unsetConflict();
         toast();
     }
 
