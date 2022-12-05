@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         TableLayout table = (TableLayout) findViewById(R.id.tableLayout);
         TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
-
         numberPad.setVisibility(View.INVISIBLE);
 
         View dialogView = (View) View.inflate(this, R.layout.dialog_memo, null);
@@ -39,13 +38,19 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Toast.makeText(getApplicationContext(), "CANCEL", Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNeutralButton("DELETE", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
 
                     }
-                })
-                .setNeutralButton("Delete", null);
+                });
         AlertDialog dialog = builder.create();
 
         for (int i = 0; i < 9; i++) {
@@ -64,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
                 buttons[i][j].setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
-                    public boolean onLongClick(View v) {
+                    public boolean onLongClick(View view) {
+                        clickedCustomButton = (CustomButton) view;
                         dialog.show();
                         return true;
                     }
@@ -121,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
+                Toast.makeText(getApplicationContext(), "RESET", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -131,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         int value = clickedCustomButton.value;
         int row = clickedCustomButton.row;
         int col = clickedCustomButton.col;
+
         for (int i = 0; i < 9; i++) {
             if (buttons[row][i].value == value) {
                 buttons[row][i].textView.setBackgroundResource(R.drawable.conflict);
@@ -157,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
         int value = clickedCustomButton.value;
         int row = clickedCustomButton.row;
         int col = clickedCustomButton.col;
+
         for (int i = 0; i < 9; i++) {
             if (buttons[row][i].value != value) {
                 buttons[row][i].textView.setBackgroundResource(R.drawable.unconflict);
@@ -273,8 +282,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickDel(View view) {
         clickedCustomButton.set(0);
+        clickedCustomButton.memo.setVisibility(View.INVISIBLE);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
+        unsetConflict();
         Toast.makeText(getApplicationContext(), "DELETE", Toast.LENGTH_SHORT).show();
     }
 

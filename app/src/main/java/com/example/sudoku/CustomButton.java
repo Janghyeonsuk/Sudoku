@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class CustomButton extends FrameLayout {
@@ -17,7 +18,8 @@ public class CustomButton extends FrameLayout {
     int boxCol;
 
     TextView textView;
-
+    TableLayout memo;
+    TextView[] memos;
     public CustomButton(Context context, int row, int col) {
         super(context);
         this.row = row;
@@ -36,10 +38,17 @@ public class CustomButton extends FrameLayout {
         addView(textView);
 
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        TableLayout memo = (TableLayout) layoutInflater.inflate(R.layout.layout_memo, null);
+        memo = (TableLayout) layoutInflater.inflate(R.layout.layout_memo, null);
         memo.setVisibility(INVISIBLE);
         addView(memo);
 
+        memos = new TextView[9];
+        for(int i = 0; i < 3; i++) {
+            TableRow tableRow = (TableRow) memo.getChildAt(i);
+            for(int j = 0; j < 3; j++, j++) {
+                memos[j] = (TextView) tableRow.getChildAt(j);
+            }
+        }
     }
 
     public void set(int a) {
