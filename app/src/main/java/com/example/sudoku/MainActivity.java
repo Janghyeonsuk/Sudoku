@@ -72,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
                                         }
 
                                         for (int i = 0; i < 9; i++) {
-                                            if (selectedToggleButtons[i] == true) {
+                                            if(clickedCustomButton.value!=0) {
+                                                Toast.makeText(getApplicationContext(), "The button is already filled", Toast.LENGTH_SHORT).show();
+                                            }
+                                            if (selectedToggleButtons[i] == true && clickedCustomButton.value==0) {
                                                 clickedCustomButton.memos[i].setVisibility(View.VISIBLE);
                                             }
                                         }
