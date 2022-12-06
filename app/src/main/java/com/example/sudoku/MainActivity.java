@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TableLayout numberPad;
 
     CustomButton[][] buttons = new CustomButton[9][9];
-    boolean[] selectedButtons = new boolean[9];
+    boolean[] selectedToggleButtons = new boolean[9];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,15 +64,15 @@ public class MainActivity extends AppCompatActivity {
                                                 ToggleButton toggleButton = (ToggleButton) tableRow.getChildAt(j);
 
                                                 if (toggleButton.isChecked()) {
-                                                    selectedButtons[k] = true;
+                                                    selectedToggleButtons[k] = true;
                                                 } else {
-                                                    selectedButtons[k] = false;
+                                                    selectedToggleButtons[k] = false;
                                                 }
                                             }
                                         }
 
                                         for (int i = 0; i < 9; i++) {
-                                            if (selectedButtons[i] == true) {
+                                            if (selectedToggleButtons[i] == true) {
                                                 clickedCustomButton.memos[i].setVisibility(View.VISIBLE);
                                             }
                                         }
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int which) {
                                         for (int i = 0; i < 9; i++) {
-                                            selectedButtons[i] = false;
+                                            selectedToggleButtons[i] = false;
                                             clickedCustomButton.memos[i].setVisibility(View.INVISIBLE);
                                         }
                                         Toast.makeText(getApplicationContext(), "DELETE MEMO", Toast.LENGTH_SHORT).show();
@@ -266,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void memoInvisible() {
         for (int i = 0; i < 9; i++) {
-            selectedButtons[i] = false;
+            selectedToggleButtons[i] = false;
             clickedCustomButton.memos[i].setVisibility(View.INVISIBLE);
         }
     }
