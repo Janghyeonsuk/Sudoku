@@ -12,7 +12,6 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/textViewMemo1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -21,7 +20,6 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textViewMemo2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -30,7 +28,6 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textViewMemo3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -45,7 +42,6 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/textViewMemo4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -54,7 +50,6 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textViewMemo5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -63,7 +58,6 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textViewMemo6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -78,7 +72,6 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/textViewMemo7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -87,7 +80,6 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textViewMemo8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -96,7 +88,6 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textViewMemo9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
