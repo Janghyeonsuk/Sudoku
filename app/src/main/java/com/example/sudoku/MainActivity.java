@@ -153,10 +153,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-                for (int i = 0; i < 9; i++) {
-                    selectedBtns[i] = false;
-                    clickedCustomButton.memos[i].setVisibility(View.INVISIBLE);
-                }
+                memoInvisible();
                 Toast.makeText(getApplicationContext(), "RESET", Toast.LENGTH_SHORT).show();
             }
         });
@@ -224,12 +221,20 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Input : " + a, Toast.LENGTH_SHORT).show();
     }
 
+    public void memoInvisible() {
+        for (int i = 0; i < 9; i++) {
+            selectedBtns[i] = false;
+            clickedCustomButton.memos[i].setVisibility(View.INVISIBLE);
+        }
+    }
+
     public void onClickNum1(View view) {
         clickedCustomButton.set(1);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
+        memoInvisible();
         toast();
     }
 
@@ -239,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
+        memoInvisible();
         toast();
     }
 
@@ -248,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
+        memoInvisible();
         toast();
     }
 
@@ -257,6 +264,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
+        memoInvisible();
         toast();
     }
 
@@ -266,6 +274,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
+        memoInvisible();
         toast();
     }
 
@@ -275,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
+        memoInvisible();
         toast();
     }
 
@@ -284,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
+        memoInvisible();
         toast();
     }
 
@@ -293,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
+        memoInvisible();
         toast();
     }
 
@@ -302,6 +314,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
+        memoInvisible();
         toast();
     }
 
@@ -315,6 +328,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
+        memoInvisible();
         Toast.makeText(getApplicationContext(), "DELETE", Toast.LENGTH_SHORT).show();
     }
 
