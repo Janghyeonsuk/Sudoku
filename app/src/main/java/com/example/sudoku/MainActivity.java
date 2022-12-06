@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
     BoardGenerator board = new BoardGenerator();
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TableLayout numberPad;
 
     CustomButton[][] buttons = new CustomButton[9][9];
+    boolean[] selectedBtns = new boolean[9];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,38 +29,11 @@ public class MainActivity extends AppCompatActivity {
         TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
 
-        View dialogView = (View) View.inflate(this, R.layout.dialog_memo, null);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle("Memo")
-                .setView(dialogView)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        switch (which) {
-                        }
-                    }
-                })
-                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        Toast.makeText(getApplicationContext(), "CANCEL", Toast.LENGTH_SHORT).show();
-                        dialogInterface.dismiss();
-                    }
-                })
-                .setNeutralButton("DELETE", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-
-                    }
-                });
-        AlertDialog dialog = builder.create();
-
         for (int i = 0; i < 9; i++) {
             TableRow tableRow = new TableRow(this);
             for (int j = 0; j < 9; j++) {
 
                 buttons[i][j] = new CustomButton(this, i, j);
-
                 buttons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -71,6 +46,57 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onLongClick(View view) {
                         clickedCustomButton = (CustomButton) view;
+
+                        View dialogView = (View) View.inflate(table.getContext(), R.layout.dialog_memo, null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(table.getContext())
+                                .setTitle("Memo")
+                                .setView(dialogView)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+
+                                        int k = 0;
+                                        TableLayout memoTable = (TableLayout) dialogView.findViewById(R.id.memoPad);
+                                        for (int i = 0; i < 3; i++) {
+                                            TableRow tableRow = (TableRow) memoTable.getChildAt(i);
+                                            for (int j = 0; j < 3; j++, k++) {
+                                                ToggleButton toggleButton = (ToggleButton) tableRow.getChildAt(j);
+                                                if (toggleButton.isChecked()) {
+                                                    selectedBtns[k] = true;
+                                                } else {
+                                                    selectedBtns[k] = false;
+                                                }
+                                            }
+                                        }
+
+                                        for (int i = 0; i < 9; i++) {
+                                            if (selectedBtns[i] == true) {
+                                                clickedCustomButton.memos[i].setVisibility(View.VISIBLE);
+                                            }
+                                        }
+                                    }
+                                })
+                                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        Toast.makeText(getApplicationContext(), "CANCEL", Toast.LENGTH_SHORT).show();
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .setNeutralButton("DELETE", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        for (int i = 0; i < 9; i++) {
+                                            selectedBtns[i] = false;
+                                            clickedCustomButton.memos[i].setVisibility(View.INVISIBLE);
+                                        }
+                                        Toast.makeText(getApplicationContext(), "DELETE MEMO", Toast.LENGTH_SHORT).show();
+                                        dialogInterface.dismiss();
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+
+
                         dialog.show();
                         return true;
                     }
@@ -126,6 +152,10 @@ public class MainActivity extends AppCompatActivity {
                             buttons[i][j].set(0);
                         }
                     }
+                }
+                for (int i = 0; i < 9; i++) {
+                    selectedBtns[i] = false;
+                    clickedCustomButton.memos[i].setVisibility(View.INVISIBLE);
                 }
                 Toast.makeText(getApplicationContext(), "RESET", Toast.LENGTH_SHORT).show();
             }
@@ -282,12 +312,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickDel(View view) {
         clickedCustomButton.set(0);
-        clickedCustomButton.memo.setVisibility(View.INVISIBLE);
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         Toast.makeText(getApplicationContext(), "DELETE", Toast.LENGTH_SHORT).show();
     }
-
 
 }
