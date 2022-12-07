@@ -20,6 +20,8 @@ public class CustomButton extends FrameLayout {
     TextView textView;
     TableLayout memo;
     TextView[] memos;
+    boolean generatedCustomButton;
+
     public CustomButton(Context context, int row, int col) {
         super(context);
         this.row = row;

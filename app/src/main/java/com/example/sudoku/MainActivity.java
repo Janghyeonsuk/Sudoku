@@ -72,10 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
 
                                         for (int i = 0; i < 9; i++) {
-                                            if(clickedCustomButton.value!=0) {
-                                                Toast.makeText(getApplicationContext(), "Please delete text first and memo", Toast.LENGTH_SHORT).show();
-                                            }
-                                            if (selectedToggleButtons[i] == true && clickedCustomButton.value==0) {
+                                            if (selectedToggleButtons[i] == true && clickedCustomButton.value==0 && clickedCustomButton.generatedCustomButton ==false) {
                                                 clickedCustomButton.memos[i].setVisibility(View.VISIBLE);
                                             }
                                         }
@@ -110,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (Math.random() <= 0.6) {
                     buttons[i][j].set(number);
+                    buttons[i][j].generatedCustomButton = true;
                 }
 
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
@@ -147,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     for (int j = 0; j < 9; j++) {
                         int number = reGame.get(i, j);
                         buttons[i][j].set(number);
+                        buttons[i][j].generatedCustomButton = true;
                         buttons[i][j].textView.setBackgroundResource(R.drawable.button_selector);
                     }
                 }
@@ -154,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                     for (int j = 0; j < 9; j++) {
                         if (Math.random() <= 0.4) {
                             buttons[i][j].set(0);
+                            buttons[i][j].generatedCustomButton = false;
                         }
                     }
                 }
@@ -275,93 +275,138 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNum1(View view) {
-        clickedCustomButton.set(1);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(1);
+            toast();
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
         memoInvisible();
-        toast();
+
     }
 
     public void onClickNum2(View view) {
-        clickedCustomButton.set(2);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(2);
+            toast();
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
         memoInvisible();
-        toast();
+
     }
 
     public void onClickNum3(View view) {
-        clickedCustomButton.set(3);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(3);
+            toast();
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
         memoInvisible();
-        toast();
+
     }
 
     public void onClickNum4(View view) {
-        clickedCustomButton.set(4);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(4);
+            toast();
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
         memoInvisible();
-        toast();
+
     }
 
     public void onClickNum5(View view) {
-        clickedCustomButton.set(5);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(5);
+            toast();
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
         memoInvisible();
-        toast();
+
     }
 
     public void onClickNum6(View view) {
-        clickedCustomButton.set(6);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(6);
+            toast();
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
         memoInvisible();
-        toast();
+
     }
 
     public void onClickNum7(View view) {
-        clickedCustomButton.set(7);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(7);
+            toast();
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
         memoInvisible();
-        toast();
+
     }
 
     public void onClickNum8(View view) {
-        clickedCustomButton.set(8);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(8);
+            toast();
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
         memoInvisible();
-        toast();
+
     }
 
     public void onClickNum9(View view) {
-        clickedCustomButton.set(9);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(9);
+            toast();
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         setConflict();
         unsetConflict();
         memoInvisible();
-        toast();
+
     }
 
     public void onClickCancel(View view) {
@@ -370,7 +415,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickDel(View view) {
-        clickedCustomButton.set(0);
+        if(!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.set(0);
+        } else {
+            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 삭제 불가능합니다.", Toast.LENGTH_SHORT).show();
+        }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
