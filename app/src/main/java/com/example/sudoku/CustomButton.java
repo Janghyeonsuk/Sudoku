@@ -41,15 +41,14 @@ public class CustomButton extends FrameLayout {
 
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         memo = (TableLayout) layoutInflater.inflate(R.layout.layout_memo, null);
-//        memo.setVisibility(INVISIBLE);
         addView(memo);
 
-        int k=0;
+        int k = 0;
         memos = new TextView[9];
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             TableRow tableRow = (TableRow) memo.getChildAt(i);
-            for(int j = 0; j < 3; j++, k++) {
-                TextView textView =  (TextView) tableRow.getChildAt(j);
+            for (int j = 0; j < 3; j++, k++) {
+                TextView textView = (TextView) tableRow.getChildAt(j);
                 textView.setVisibility(INVISIBLE);
                 memos[k] = textView;
             }

@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
 
                                         for (int i = 0; i < 9; i++) {
-                                            if (selectedToggleButtons[i] == true && clickedCustomButton.value==0 && clickedCustomButton.generatedCustomButton ==false) {
+                                            if (selectedToggleButtons[i] == true && clickedCustomButton.value == 0 && clickedCustomButton.generatedCustomButton == false) {
                                                 clickedCustomButton.memos[i].setVisibility(View.VISIBLE);
                                             }
                                         }
@@ -166,8 +166,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean checkRow() {
-        int value = clickedCustomButton.value;
         int row = clickedCustomButton.row;
+        int col = clickedCustomButton.col;
+        int value = buttons[row][col].value;
 
         for (int i = 0; i < 9; i++) {
             if (buttons[row][i].value == value && clickedCustomButton != buttons[row][i]) {
@@ -179,8 +180,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public boolean checkCol() {
-        int value = clickedCustomButton.value;
+        int row = clickedCustomButton.row;
         int col = clickedCustomButton.col;
+        int value = buttons[row][col].value;
 
         for (int i = 0; i < 9; i++) {
             if (buttons[i][col].value == value && clickedCustomButton != buttons[i][col]) {
@@ -192,7 +194,6 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkBox() {
         int value = clickedCustomButton.value;
-
         for (int i = clickedCustomButton.boxRow; i < clickedCustomButton.boxRow + 3; i++) {
             for (int j = clickedCustomButton.boxCol; j < clickedCustomButton.boxCol + 3; j++) {
                 if (buttons[i][j].value == value && clickedCustomButton != buttons[i][j]) {
@@ -204,16 +205,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setConflict() {
-        int value = clickedCustomButton.value;
         int row = clickedCustomButton.row;
         int col = clickedCustomButton.col;
+        int value = buttons[row][col].value;
+
         for (int i = 0; i < 9; i++) {
             if (buttons[row][i].value == value && clickedCustomButton != buttons[row][i]) {
                 buttons[row][i].textView.setBackgroundResource(R.drawable.conflict);
+                clickedCustomButton.textView.setBackgroundResource(R.drawable.conflict);
             }
 
             if (buttons[i][col].value == value && clickedCustomButton != buttons[i][col]) {
                 buttons[i][col].textView.setBackgroundResource(R.drawable.conflict);
+                clickedCustomButton.textView.setBackgroundResource(R.drawable.conflict);
             }
         }
 
@@ -221,44 +225,31 @@ public class MainActivity extends AppCompatActivity {
             for (int j = clickedCustomButton.boxCol; j < clickedCustomButton.boxCol + 3; j++) {
                 if (buttons[i][j].value == value && clickedCustomButton != buttons[i][j]) {
                     buttons[i][j].textView.setBackgroundResource(R.drawable.conflict);
+                    clickedCustomButton.textView.setBackgroundResource(R.drawable.conflict);
                 }
             }
-        }
-        if (checkRow() || checkCol() || checkBox()) {
-            clickedCustomButton.textView.setBackgroundResource(R.drawable.conflict);
         }
     }
 
-
     public void unsetConflict() {
-        int value = clickedCustomButton.value;
         int row = clickedCustomButton.row;
         int col = clickedCustomButton.col;
+        int value = buttons[row][col].value;
 
-        if (value == 0) {
+        if (!checkRow() && !checkCol() && !checkBox() || value == 0) {
             clickedCustomButton.textView.setBackgroundResource(R.drawable.unconflict);
-        }
 
-        for (int i = 0; i < 9; i++) {
-            if (buttons[row][i].value != value && clickedCustomButton != buttons[row][i]) {
+            for (int i = 0; i < 9; i++) {
                 buttons[row][i].textView.setBackgroundResource(R.drawable.unconflict);
-            }
-
-            if (buttons[i][col].value != value && clickedCustomButton != buttons[i][col]) {
                 buttons[i][col].textView.setBackgroundResource(R.drawable.unconflict);
             }
-        }
-        for (int i = clickedCustomButton.boxRow; i < clickedCustomButton.boxRow + 3; i++) {
-            for (int j = clickedCustomButton.boxCol; j < clickedCustomButton.boxCol + 3; j++) {
-                if (buttons[i][j].value != value && clickedCustomButton != buttons[i][j]) {
-                    buttons[i][j].textView.setBackgroundResource(R.drawable.unconflict);
+
+            for (int j = clickedCustomButton.boxRow; j < clickedCustomButton.boxRow + 3; j++) {
+                for (int k = clickedCustomButton.boxCol; k < clickedCustomButton.boxCol + 3; k++) {
+                    buttons[j][k].textView.setBackgroundResource(R.drawable.unconflict);
                 }
             }
         }
-        if (!checkRow() && !checkCol() && !checkBox()) {
-            clickedCustomButton.textView.setBackgroundResource(R.drawable.unconflict);
-        }
-
     }
 
     public void toast() {
@@ -275,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNum1(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(1);
             toast();
         } else {
@@ -290,122 +281,125 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNum2(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(2);
+            setConflict();
+            unsetConflict();
+            memoInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        setConflict();
-        unsetConflict();
-        memoInvisible();
-
     }
 
     public void onClickNum3(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(3);
+            setConflict();
+            unsetConflict();
+            memoInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        setConflict();
-        unsetConflict();
-        memoInvisible();
-
     }
 
     public void onClickNum4(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(4);
+            setConflict();
+            unsetConflict();
+            memoInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        setConflict();
-        unsetConflict();
-        memoInvisible();
+
 
     }
 
     public void onClickNum5(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(5);
+            setConflict();
+            unsetConflict();
+            memoInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        setConflict();
-        unsetConflict();
-        memoInvisible();
+
 
     }
 
     public void onClickNum6(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(6);
+            setConflict();
+            unsetConflict();
+            memoInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        setConflict();
-        unsetConflict();
-        memoInvisible();
+
 
     }
 
     public void onClickNum7(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(7);
+            setConflict();
+            unsetConflict();
+            memoInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        setConflict();
-        unsetConflict();
-        memoInvisible();
 
     }
 
     public void onClickNum8(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(8);
+            setConflict();
+            unsetConflict();
+            memoInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        setConflict();
-        unsetConflict();
-        memoInvisible();
+
 
     }
 
     public void onClickNum9(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(9);
+            setConflict();
+            unsetConflict();
+            memoInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        setConflict();
-        unsetConflict();
-        memoInvisible();
+
 
     }
 
@@ -415,14 +409,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickDel(View view) {
-        if(!clickedCustomButton.generatedCustomButton) {
+        if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(0);
+            unsetConflict();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 삭제 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        unsetConflict();
+
         memoInvisible();
         Toast.makeText(getApplicationContext(), "DELETE", Toast.LENGTH_SHORT).show();
     }
