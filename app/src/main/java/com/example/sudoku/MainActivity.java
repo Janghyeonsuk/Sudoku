@@ -196,8 +196,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        for (int i = clickedCustomButton.boxRow; i < clickedCustomButton.boxRow + 3; i++) {
-            for (int j = clickedCustomButton.boxCol; j < clickedCustomButton.boxCol + 3; j++) {
+        for (int i = clickedCustomButton.customBoxRow; i < clickedCustomButton.customBoxRow + 3; i++) {
+            for (int j = clickedCustomButton.customBoxCol; j < clickedCustomButton.customBoxCol + 3; j++) {
                 if (buttons[i][j].value == value && clickedCustomButton != buttons[i][j]) {
                     buttons[i][j].textView.setBackgroundResource(R.drawable.conflict);
                     clickedCustomButton.textView.setBackgroundResource(R.drawable.conflict);
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void unsetConflict() {
-        
+
     }
 
     public void toast() {

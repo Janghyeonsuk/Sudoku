@@ -14,8 +14,8 @@ public class CustomButton extends FrameLayout {
     int col;
     int value;
 
-    int boxRow;
-    int boxCol;
+    int customBoxRow;
+    int customBoxCol;
 
     TextView textView;
     TableLayout memo;
@@ -27,8 +27,8 @@ public class CustomButton extends FrameLayout {
         this.row = row;
         this.col = col;
 
-        boxRow = (row / 3) * 3;
-        boxCol = (col / 3) * 3;
+        customBoxRow = (row / 3) * 3;
+        customBoxCol = (col / 3) * 3;
 
         textView = new TextView(context);
 
