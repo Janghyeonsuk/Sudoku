@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     CustomButton[][] buttons = new CustomButton[9][9];
     boolean[] selectedToggleButtons = new boolean[9];
+    int value[][] = new int[9][9];
+    int boxRow;
+    int boxCol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +113,10 @@ public class MainActivity extends AppCompatActivity {
                     buttons[i][j].generatedCustomButton = true;
                 }
 
+                boxRow = (i / 3) * 3;
+                boxCol = (j / 3) * 3;
+                value[i][j] = buttons[i][j].value;
+
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
                         TableRow.LayoutParams.WRAP_CONTENT,
                         TableRow.LayoutParams.WRAP_CONTENT,
@@ -157,51 +164,19 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
+                for (int i = 0; i < 9; i++) {
+                    for (int j = 0; j < 9; j++) {
+                        boxRow = (i / 3) * 3;
+                        boxCol = (j / 3) * 3;
+                        value[i][j] = buttons[i][j].value;
+                    }
+                }
                 memoInvisible();
                 Toast.makeText(getApplicationContext(), "RESET", Toast.LENGTH_SHORT).show();
             }
         });
 
         table.addView(reset);
-    }
-
-    public boolean checkRow() {
-        int row = clickedCustomButton.row;
-        int col = clickedCustomButton.col;
-        int value = buttons[row][col].value;
-
-        for (int i = 0; i < 9; i++) {
-            if (buttons[row][i].value == value && clickedCustomButton != buttons[row][i]) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-    public boolean checkCol() {
-        int row = clickedCustomButton.row;
-        int col = clickedCustomButton.col;
-        int value = buttons[row][col].value;
-
-        for (int i = 0; i < 9; i++) {
-            if (buttons[i][col].value == value && clickedCustomButton != buttons[i][col]) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean checkBox() {
-        int value = clickedCustomButton.value;
-        for (int i = clickedCustomButton.boxRow; i < clickedCustomButton.boxRow + 3; i++) {
-            for (int j = clickedCustomButton.boxCol; j < clickedCustomButton.boxCol + 3; j++) {
-                if (buttons[i][j].value == value && clickedCustomButton != buttons[i][j]) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     public void setConflict() {
@@ -232,24 +207,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void unsetConflict() {
-        int row = clickedCustomButton.row;
-        int col = clickedCustomButton.col;
-        int value = buttons[row][col].value;
-
-        if (!checkRow() && !checkCol() && !checkBox() || value == 0) {
-            clickedCustomButton.textView.setBackgroundResource(R.drawable.unconflict);
-
-            for (int i = 0; i < 9; i++) {
-                buttons[row][i].textView.setBackgroundResource(R.drawable.unconflict);
-                buttons[i][col].textView.setBackgroundResource(R.drawable.unconflict);
-            }
-
-            for (int j = clickedCustomButton.boxRow; j < clickedCustomButton.boxRow + 3; j++) {
-                for (int k = clickedCustomButton.boxCol; k < clickedCustomButton.boxCol + 3; k++) {
-                    buttons[j][k].textView.setBackgroundResource(R.drawable.unconflict);
-                }
-            }
-        }
+        
     }
 
     public void toast() {
