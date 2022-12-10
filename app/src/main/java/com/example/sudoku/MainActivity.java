@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
     CustomButton[][] buttons = new CustomButton[9][9];
     boolean[] selectedToggleButtons = new boolean[9];
-    int value[][] = new int[9][9];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
                     buttons[i][j].generatedCustomButton = true;
                 }
 
-                value[i][j] = buttons[i][j].value;
 
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
                         TableRow.LayoutParams.WRAP_CONTENT,
@@ -160,11 +158,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-                for (int i = 0; i < 9; i++) {
-                    for (int j = 0; j < 9; j++) {
-                        value[i][j] = buttons[i][j].value;
-                    }
-                }
+
                 memoInvisible();
                 Toast.makeText(getApplicationContext(), "RESET", Toast.LENGTH_SHORT).show();
             }
@@ -201,7 +195,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void unsetConflict() {
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 9; x++) {
+                int num = buttons[y][x].value;
+                boolean status = false;
 
+                if (buttons[y][x].value == 0) continue;
+
+                for (int i = 0; i < 9; i++) {
+                    if (i == x) continue;
+
+                    if (buttons[y][i].value == num) {
+                        status = true;
+                    }
+                }
+
+                for (int i = 0; i < 9; i++) {
+                    if (i == y) continue;
+
+                    if (buttons[i][x].value == num) {
+                        status = true;
+                    }
+                }
+
+                int boxRow = (x / 3) * 3;
+                int boxCol = (y / 3) * 3;
+
+                for (int j = boxCol; j < boxCol + 3; j++) {
+                    for (int i = boxRow; i < boxRow + 3; i++) {
+                        if (i == x && j == y) continue;
+
+                        if (buttons[j][i].value == num) {
+                            status = true;
+                        }
+                    }
+                }
+
+                if (status) {
+                    buttons[y][x].textView.setBackgroundResource(R.drawable.conflict);
+                } else {
+                    buttons[y][x].textView.setBackgroundResource(R.drawable.unconflict);
+                }
+            }
+        }
     }
 
     public void toast() {
@@ -220,16 +256,15 @@ public class MainActivity extends AppCompatActivity {
     public void onClickNum1(View view) {
         if (!clickedCustomButton.generatedCustomButton) {
             clickedCustomButton.set(1);
+            setConflict();
+            unsetConflict();
+            memoInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-        setConflict();
-        unsetConflict();
-        memoInvisible();
-
     }
 
     public void onClickNum2(View view) {
@@ -351,8 +386,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickDel(View view) {
         if (!clickedCustomButton.generatedCustomButton) {
+            clickedCustomButton.textView.setBackgroundResource(R.drawable.unconflict);
             clickedCustomButton.set(0);
             unsetConflict();
+
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 삭제 불가능합니다.", Toast.LENGTH_SHORT).show();
         }
@@ -362,6 +399,5 @@ public class MainActivity extends AppCompatActivity {
         memoInvisible();
         Toast.makeText(getApplicationContext(), "DELETE", Toast.LENGTH_SHORT).show();
     }
-
 
 }
