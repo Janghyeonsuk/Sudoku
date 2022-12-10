@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
     CustomButton[][] buttons = new CustomButton[9][9];
     boolean[] selectedToggleButtons = new boolean[9];
     int value[][] = new int[9][9];
-    int boxRow;
-    int boxCol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,8 +111,6 @@ public class MainActivity extends AppCompatActivity {
                     buttons[i][j].generatedCustomButton = true;
                 }
 
-                boxRow = (i / 3) * 3;
-                boxCol = (j / 3) * 3;
                 value[i][j] = buttons[i][j].value;
 
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
@@ -166,8 +162,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 for (int i = 0; i < 9; i++) {
                     for (int j = 0; j < 9; j++) {
-                        boxRow = (i / 3) * 3;
-                        boxCol = (j / 3) * 3;
                         value[i][j] = buttons[i][j].value;
                     }
                 }
@@ -278,8 +272,6 @@ public class MainActivity extends AppCompatActivity {
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-
-
     }
 
     public void onClickNum5(View view) {
@@ -294,8 +286,6 @@ public class MainActivity extends AppCompatActivity {
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-
-
     }
 
     public void onClickNum6(View view) {
@@ -310,8 +300,6 @@ public class MainActivity extends AppCompatActivity {
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-
-
     }
 
     public void onClickNum7(View view) {
@@ -326,7 +314,6 @@ public class MainActivity extends AppCompatActivity {
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-
     }
 
     public void onClickNum8(View view) {
@@ -341,8 +328,6 @@ public class MainActivity extends AppCompatActivity {
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-
-
     }
 
     public void onClickNum9(View view) {
@@ -357,8 +342,6 @@ public class MainActivity extends AppCompatActivity {
         }
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
-
-
     }
 
     public void onClickCancel(View view) {
@@ -379,5 +362,6 @@ public class MainActivity extends AppCompatActivity {
         memoInvisible();
         Toast.makeText(getApplicationContext(), "DELETE", Toast.LENGTH_SHORT).show();
     }
+
 
 }
