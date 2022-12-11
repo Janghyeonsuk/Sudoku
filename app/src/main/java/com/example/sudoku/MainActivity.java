@@ -71,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
                                             }
                                         }
 
+                                        if (clickedCustomButton.generatedCustomButton == true) {
+                                            Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 메모가 불가능합니다.", Toast.LENGTH_SHORT).show();
+                                        }
+
                                         for (int i = 0; i < 9; i++) {
                                             if (selectedToggleButtons[i] == true && clickedCustomButton.generatedCustomButton == false) {
                                                 clickedCustomButton.set(0);
@@ -151,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                         buttons[i][j].set(number);
                         buttons[i][j].generatedCustomButton = true;
                         buttons[i][j].textView.setBackgroundResource(R.drawable.button_selector);
+                        memoInvisible();
                     }
                 }
                 for (int i = 0; i < 9; i++) {
@@ -162,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                memoInvisible();
                 Toast.makeText(getApplicationContext(), "RESET", Toast.LENGTH_SHORT).show();
             }
         });
@@ -251,6 +255,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void memoInvisible() {
         for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                for (int k = 0; k < 9; k++) {
+                    buttons[i][j].memos[k].setVisibility(View.INVISIBLE);
+                }
+            }
+        }
+    }
+
+    public void memosInvisible() {
+        for (int i = 0; i < 9; i++) {
             selectedToggleButtons[i] = false;
             clickedCustomButton.memos[i].setVisibility(View.INVISIBLE);
         }
@@ -261,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
             clickedCustomButton.set(1);
             setConflict();
             unsetConflict();
-            memoInvisible();
+            memosInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
@@ -275,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
             clickedCustomButton.set(2);
             setConflict();
             unsetConflict();
-            memoInvisible();
+            memosInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
@@ -289,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
             clickedCustomButton.set(3);
             setConflict();
             unsetConflict();
-            memoInvisible();
+            memosInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
@@ -303,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
             clickedCustomButton.set(4);
             setConflict();
             unsetConflict();
-            memoInvisible();
+            memosInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
@@ -317,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
             clickedCustomButton.set(5);
             setConflict();
             unsetConflict();
-            memoInvisible();
+            memosInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
@@ -331,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
             clickedCustomButton.set(6);
             setConflict();
             unsetConflict();
-            memoInvisible();
+            memosInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
@@ -345,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
             clickedCustomButton.set(7);
             setConflict();
             unsetConflict();
-            memoInvisible();
+            memosInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
@@ -359,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
             clickedCustomButton.set(8);
             setConflict();
             unsetConflict();
-            memoInvisible();
+            memosInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
@@ -373,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
             clickedCustomButton.set(9);
             setConflict();
             unsetConflict();
-            memoInvisible();
+            memosInvisible();
             toast();
         } else {
             Toast.makeText(getApplicationContext(), "초기에 생성된 버튼이라 변경 불가능합니다.", Toast.LENGTH_SHORT).show();
@@ -399,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
         numberPad = (TableLayout) findViewById(R.id.numberPad);
         numberPad.setVisibility(View.INVISIBLE);
 
-        memoInvisible();
+        memosInvisible();
         Toast.makeText(getApplicationContext(), "DELETE", Toast.LENGTH_SHORT).show();
     }
 
