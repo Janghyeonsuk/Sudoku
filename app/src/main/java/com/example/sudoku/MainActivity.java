@@ -72,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
                                         }
 
                                         for (int i = 0; i < 9; i++) {
-                                            if (selectedToggleButtons[i] == true && clickedCustomButton.value == 0 && clickedCustomButton.generatedCustomButton == false) {
+                                            if (selectedToggleButtons[i] == true && clickedCustomButton.generatedCustomButton == false) {
+                                                clickedCustomButton.set(0);
+                                                clickedCustomButton.textView.setBackgroundResource(R.drawable.unconflict);
+                                                unsetConflict();
                                                 clickedCustomButton.memos[i].setVisibility(View.VISIBLE);
                                             }
                                         }
@@ -198,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 9; x++) {
                 int num = buttons[y][x].value;
-                boolean status = false;
+                boolean conflictButton = false;
 
                 if (buttons[y][x].value == 0) continue;
 
@@ -206,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                     if (i == x) continue;
 
                     if (buttons[y][i].value == num) {
-                        status = true;
+                        conflictButton = true;
                     }
                 }
 
@@ -214,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                     if (i == y) continue;
 
                     if (buttons[i][x].value == num) {
-                        status = true;
+                        conflictButton = true;
                     }
                 }
 
@@ -226,12 +229,12 @@ public class MainActivity extends AppCompatActivity {
                         if (i == x && j == y) continue;
 
                         if (buttons[j][i].value == num) {
-                            status = true;
+                            conflictButton = true;
                         }
                     }
                 }
 
-                if (status) {
+                if (conflictButton) {
                     buttons[y][x].textView.setBackgroundResource(R.drawable.conflict);
                 } else {
                     buttons[y][x].textView.setBackgroundResource(R.drawable.unconflict);
