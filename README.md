@@ -30,16 +30,21 @@
 ## 3. 실행
 
 스도쿠 보드 생성
+
 ![image](https://user-images.githubusercontent.com/74901548/208420665-89f504d5-92f6-41f0-a604-436bf9737fa9.png)
 
 스도쿠 숫자 입력
+
 ![image](https://user-images.githubusercontent.com/74901548/208420783-3839fae5-1ee5-43d8-8c5f-f626c09e37ff.png)
 
 스도쿠 메모 입력
+
 ![image](https://user-images.githubusercontent.com/74901548/208420886-bc481804-071d-4507-8a1b-47000522ffcd.png)
 
 스도쿠 conflict / unconflict
+
 ![image](https://user-images.githubusercontent.com/74901548/208421003-cd65caa1-ad69-44b5-b30e-76fd2ca26117.png)
 
 스도쿠 Reset
+
 ![image](https://user-images.githubusercontent.com/74901548/208421133-c0210f48-9925-414f-8301-c0ded17b600f.png)
